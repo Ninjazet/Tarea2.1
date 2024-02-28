@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <StackLayout Padding="30" Spacing="20">
+
+        <Grid>
+            <Picker x:Name="cmbRegion"
+                Title="Selecciona una región"
+                FontSize="Medium"
+                BackgroundColor="#F2C637"
+                TextColor="Black"
+                TitleColor="#A49999"
+                
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Margin="0,0,0,10">
+                
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>America</x:String>
+                        <x:String>Africa</x:String>
+                        <x:String>Asia</x:String>
+                        <x:String>Oceania</x:String>
+                        <x:String>Europe</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </Grid>
+        <Frame BackgroundColor="#A49999"
+               CornerRadius="20"
+               HasShadow="True"
+               Margin="0"
+               Padding="10">
+            <ListView x:Name="ListCountries"
+                      
+                      SeparatorVisibility="None"
+                      SelectionMode="None"
+                      BackgroundColor="#FFFFFF">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="15"
+                                  Padding="10"
+                                  BackgroundColor="#FFFFFF">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding flags.svg, Converter={StaticResource SvgToImageValid}}"
+                                       Grid.Column="0" 
+                                       HorizontalOptions="Start"/>
+                                <Label Text="{Binding NameCountry.common}"
+                                       Grid.Column="1" 
+                                       FontSize="Medium"
+                                       HorizontalOptions="Start"/>
+                                <Label Text="{Binding CodeCountry}"
+                                       Grid.Column="2" 
+                                       FontSize="Medium"
+                                       HorizontalOptions="End"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+    </StackLayout>
+
+
+</ContentPage>
